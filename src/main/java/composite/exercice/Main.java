@@ -21,16 +21,6 @@ public class Main {
         dossier2.addFichier(fichier3);
 
         // calculer poids dossier => utiliser le design patter composite pour calculer le poids d'un dossier
-        List<Dossier> dossiersATraiter = new ArrayList<>();
-        dossiersATraiter.add(dossier1);
-        int tailleTotal = 0;
-        while (!dossiersATraiter.isEmpty()) {
-            Dossier dossier = dossiersATraiter.remove(0);
-            for (Fichier fichier : dossier.getFichiers()) {
-                tailleTotal += fichier.getTaille();
-            }
-            dossiersATraiter.addAll(dossier.getSousDossiers());
-        }
-        System.out.println(tailleTotal);
+        System.out.println(dossier1.getTaille());
     }
 }
