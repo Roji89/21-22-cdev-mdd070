@@ -6,7 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
         Bourse bourse = new Bourse();
-        bourse.setPrixBTC(28_396);
+
+        BourseSubscriber achteur = new TraderAchter();
+        bourse.subscriber(achteur);
+
+        BourseSubscriber vendeur = new TraderVendeur();
+        bourse.subscriber(vendeur);
 
         while (true) {
 
@@ -15,19 +20,13 @@ public class Main {
             int random = (new Random().nextInt(10_000) - 5000);
             bourse.setPrixBTC(28_396 + random);
 
-            double p = bourse.getPrixBTC();
-            if (p < 25_000) {
-                System.out.println("Acheter du BTC !!!! car il vaut " + p);
-                return;
-            } else {
-                System.out.println("c'est trop cher il vaut mieux attendre");
-                try {
+             try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-        }
+
     }
 
 }
